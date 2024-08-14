@@ -1,0 +1,14 @@
+.container{
+  background-color: rgb(162, 127, 243);
+  color: rgb(255, 255, 255);
+  padding: 40px;
+  font-family: "맑은 고딕"; /* 공백이 있을 경우, 패밀리가 없더라도 "" 따옴표로 묶어주어야함 */
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  background-color: #2ff22f;
+  padding: 10px;
+  font-family: 궁서;
+}
