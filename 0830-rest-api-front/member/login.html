@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const a = () => {
+      let req = new XMLHttpRequest(); 
+      req.onload = () => {//요청 응답이 오면 자동 호출될 핸들러 등록
+        let obj = JSON.parse(req.responseText);
+        if(obj.flag){
+          alert('로그인 성공');
+          localStorage.setItem("flag", true);
+          localStorage.setItem("loginId", obj.loginId);
+          localStorage.setItem("type", obj.type);    
+        }
+        location.href = "../index.html";
+      }
+      let id = document.getElementById("id").value;
+      let pwd = document.getElementById("pwd").value;
+      let params = 'id=' + id + '&pwd=' + pwd;
+      req.open('GET', 'http://localhost:8080/members/login?' + params);
+      
+      //요청 전송
+      req.send();
+    }
+  </script>
+  </head>
+  <body>
+  <h3>로그인 폼</h3>
+    <table border="1">
+      <tr><th>ID</th><td><input type="text" id="id"></td></tr>
+      <tr><th>PWD</th><td><input type="password" id="pwd"></td></tr>
+      <tr><th>LOGIN</th><td><input type="button" value="login" onclick="a()"></td></tr>
+    </table>
+  </body>
+  </html>

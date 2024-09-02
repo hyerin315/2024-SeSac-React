@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    window.onload = () => {
+      let flag = localStorage.getItem("flag");
+      if(flag!=null && flag){
+        document.getElementById("div1").style.display = 'none';
+        document.getElementById("div2").style.display = '';
+      }else{
+        document.getElementById("div1").style.display = '';
+        document.getElementById("div2").style.display = 'none';
+      }
+    }
+
+    let logout = () => {
+    localStorage.removeItem('flag'); //removeItem : 저장해둔 item을 삭제하는 메소드
+    localStorage.removeItem('loginId');
+    localStorage.removeItem('type');
+    location.reload();
+    }
+  </script>
+</head>
+<body>
+  <h3>게시판</h3>
+  <div id="div1">
+    <a href="./member/login.html">로그인</a><br/>
+    <a href="./member/join.html">회원가입</a><br/>
+  </div>
+  <div id="div2">
+    <a href="./member/detail.html">내정보확인</a><br/>
+    <input type="button" value="logout" onclick="logout()"/><br/>
+    <a href="./board/list.html">글목록</a><br/>
+  </div>
+  </body>
+</html>
